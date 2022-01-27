@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geo Location</title>
+</head>
+<script defer>
+    let btn = document.getElementById("btn");
+    
+    function geolocation(){
+        if(navigator.geolocation){
+            navigator.geolocation.getCurrentPosition(hi) // getcurrentposition is already a function and we are calling function inside the function that's why we don't need to put like this way>>>  hi()
+        }else{
+            out.innerText = "Geo Not Supported";
+        }
+    }
+    function hi(data){
+        console.log(data)
+        let out = document.getElementById("out");
+        let lat = data.coords.latitude;
+        let long = data.coords.longitude;
+        out.innerText = `latitude is ${lat} and longitude is ${long}`
+    }
+
+</script>
+<body>
+    <button id="btn" onclick="geolocation()">Get Location</button>
+    <p id="out"></p>
+</body>
+</html>
